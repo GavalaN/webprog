@@ -1,5 +1,6 @@
 body {
     background-color: #f8f9fa;
+    background-image: url('./img/hatter.jfif');
     margin: 0;
     padding: 0;
     color: #343a40;
@@ -34,4 +35,9 @@ p {
     margin-right: auto;
     display: flex;
     place-content: center;
+}
+
+.card .card-body button{
+    margin-left: 38%;
+    margin-right: auto;
 }
