@@ -29,7 +29,9 @@ p {
 }
 
 .card{
-    margin: 20px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     place-content: center;
 }

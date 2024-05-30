@@ -20,3 +20,7 @@ function fetchGET(){
     })
 }
 fetchGET()
+
+for (const item of object) {
+    
+}
