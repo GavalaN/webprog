@@ -22,7 +22,7 @@ function fetchGET() {
                     <button class="btn" alt="Információk" type="button" onclick="toggleCollapse(${adat.id})">
                         <i class="bi bi-info-circle"></i>
                     </button>
-                    <button class="btn" alt="Módosítás" onclick="FetchPUT(${adat.id})">
+                    <button class="btn" alt="Módosítás" onclick="FetchPUTatvezet(${adat.id})">
                         <i class="bi bi-wrench"></i>
                     </button>
                     <button class="btn" alt="Törlés" onclick="FetchDELETE(${adat.id})">
@@ -45,8 +45,64 @@ function toggleCollapse(id) {
     }
 }
 
-fetchGET();
-
-function fetchPOST() {
-    
+if(window.location.href.includes("szallasok.html"))
+{
+    fetchGET();
 }
+
+
+function fetchPOST()
+{
+    let adatok = JSON.stringify({
+        name: document.getElementById("name").value,
+        hostname: document.getElementById("hostname").value,
+        location: document.getElementById("location").value,
+        price: document.getElementById("price").value,
+        minimum_nights: document.getElementById("minimum_nights").value
+    })
+    fetch("http://nodejs.sulla.hu/data", 
+    {
+        method: "POST",
+        body: adatok,
+        headers: {
+            "Content-Type": "application/json",
+
+          }
+    })
+    alert("Sikeres felvétel!")
+    location.reload();
+}
+
+function FetchDELETE(id)
+{
+    fetch("http://nodejs.sulla.hu/data/"+id, 
+    {
+        method: "DELETE"
+    })
+    .then(response => {  console.log(response.status); })
+    setTimeout(() => {
+        location.reload();
+    }, 1000);
+}
+
+function FetchPUTatvezet(azon) {
+    localStorage.setItem("azon", azon);
+    alert(localStorage.getItem("azon"));
+}
+
+if(window.location.href.includes("ujszallas.html"))
+    {
+        fetch("http://nodejs.sulla.hu/data")
+        .then(function(valasz){
+        return valasz.json()
+        })
+        .then(function(valasz2){
+            for (const adat of valasz2) {
+                if(localStorage.getItem("azon") == adat.id)
+                {
+                    console.log(adat);
+                }
+            }
+        })
+        document.getElementById("gomb").innerText="PUT";
+    }
