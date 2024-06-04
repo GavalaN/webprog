@@ -87,22 +87,22 @@ function FetchDELETE(id)
 
 function FetchPUTatvezet(azon) {
     localStorage.setItem("azon", azon);
-    alert(localStorage.getItem("azon"));
+    console.log(localStorage.getItem("azon"));
 }
 
-if(window.location.href.includes("ujszallas.html"))
+if(window.location.href.includes("ujszallas.html") && FetchPUTatvezet())
     {
-        fetch("http://nodejs.sulla.hu/data")
+        fetch("http://nodejs.sulla.hu/data/"+localStorage.getItem("azon"))
         .then(function(valasz){
-        return valasz.json()
+        return valasz.json();
         })
         .then(function(valasz2){
-            for (const adat of valasz2) {
-                if(localStorage.getItem("azon") == adat.id)
-                {
-                    console.log(adat);
-                }
-            }
+        console.log(valasz2);
+        document.getElementById("name").value = valasz2.name;
+        document.getElementById("hostname").value = valasz2.hostname;
+        document.getElementById("location").value = valasz2.location;
+        document.getElementById("price").value = valasz2.price;
+        document.getElementById("minimum_nights").value = valasz2.minimum_nights;
         })
         document.getElementById("gomb").innerText="PUT";
     }
