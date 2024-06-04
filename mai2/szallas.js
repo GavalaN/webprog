@@ -114,9 +114,6 @@ if((localStorage.getItem("azon") > -1) && window.location.href.includes("ujszall
     document.getElementById("gomb").innerText="PUT";
     document.getElementById("gomb").setAttribute('onclick','FetchPUT()')
 }
-/*else{
-    
-}*/
 
 function FetchPUT() {
     let adatok = JSON.stringify({
