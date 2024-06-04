@@ -125,7 +125,7 @@ p {
     border: 2px solid #343a40;
     transition: 0.5s ease-out;
     overflow: visible;
-    margin: 30px;
+    margin-top: 50px;
    }
 
 .bevitel .btn{
@@ -148,10 +148,21 @@ p {
 }
 
 #kezdolap{
-    margin-top: 200px;
+    margin-top: 250px;
     background-color: #343a40;
     padding-bottom: 20px;
     border: 2px solid #757575;
     border-left: 0px;
     border-right: 0px;
+}
+
+#felfele{
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+#felfele i{
+    color: white;
 }
